@@ -19,7 +19,7 @@ module.exports = {
     validate: function (req, res, next) {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() }); // Return validation errors
+            return res.status(400).json({ errors: errors.array() }); 
         }
         next();
     },
@@ -54,11 +54,5 @@ module.exports = {
         body("password")
             .isLength({ min: options.password.minLength })
             .withMessage("Username hoặc password sai")
-    ],
-    RoleValidator: [ // New validator for roles
-        body("name")
-            .isString().withMessage("Role name must be a string")
-            .notEmpty().withMessage("Role name is required")
-            .isLength({ min: 3 }).withMessage("Role name must be at least 3 characters long")
     ]
 };
